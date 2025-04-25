@@ -1,11 +1,15 @@
 (function(Scratch) {
     'use strict';
 
+    if (!Scratch.extensions.unsandboxed) {
+        throw new Error('This extension requires unsandboxed mode.');
+    }
+
     class AdditionExtension {
         getInfo() {
             return {
-                id: 'additionExtension', // unique ID
-                name: 'Addition Tools', // extension name in Scratch
+                id: 'additionExtension',
+                name: 'Addition Tools',
                 blocks: [
                     {
                         opcode: 'addTwoNumbers',
@@ -20,7 +24,8 @@
                                 type: Scratch.ArgumentType.NUMBER,
                                 defaultValue: 1
                             }
-                        }
+                        },
+                        func: 'addTwoNumbers'
                     }
                 ]
             };
