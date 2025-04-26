@@ -1,4 +1,10 @@
 const Scratch = window.Scratch;
+
+function validateNumber(input) {
+  const num = Number(input);
+  return isNaN(num) ? 0 : num;
+}
+
 class MyExtension {
   getInfo() {
     return {
@@ -46,20 +52,28 @@ class MyExtension {
   }
 
   addNumbers(args) {
-    return Number(args.NUM1) + Number(args.NUM2);
+    const num1 = validateNumber(args.NUM1);
+    const num2 = validateNumber(args.NUM2);
+    return num1 + num2;
   }
 
   subtractNumbers(args) {
-    return Number(args.NUM2) - Number(args.NUM1);
+    const num1 = validateNumber(args.NUM1);
+    const num2 = validateNumber(args.NUM2);
+    return num2 - num1;
   }
 
   multiplyNumbers(args) {
-    return Number(args.NUM1) * Number(args.NUM2);
+    const num1 = validateNumber(args.NUM1);
+    const num2 = validateNumber(args.NUM2);
+    return num1 * num2;
   }
 
   divideNumbers(args) {
-    if (Number(args.NUM2) === 0) return 'undefined';
-    return Number(args.NUM1) / Number(args.NUM2);
+    const num1 = validateNumber(args.NUM1);
+    const num2 = validateNumber(args.NUM2);
+    if (num2 === 0) return 'Error: Division by zero';
+    return num1 / num2;
   }
 }
 
