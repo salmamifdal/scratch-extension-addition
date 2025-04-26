@@ -1,3 +1,4 @@
+const Scratch = window.Scratch;
 class MyExtension {
   getInfo() {
     return {
